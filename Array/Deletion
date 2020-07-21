@@ -1,0 +1,68 @@
+#include <iostream>
+
+using namespace std;
+class arr
+{
+  public:
+      int a[10];
+      int length;
+      int sizes;
+      void display();
+      int deletion(int x);
+
+};
+
+void arr::display()
+{
+    for(int i=0;i<length;i++)
+    {
+        cout<<a[i]<<" ";
+
+    }
+
+}
+int arr::deletion(int x)
+{
+    int delstore;
+    if(x>0&&x<=length)
+    {
+
+    delstore=a[x-1];
+    for(int i=x-1;i<length-1;i++)
+    {
+        a[i]=a[i+1];
+
+    }
+    length--;
+    return delstore;
+    }
+    else{
+        cout<<"You choose a wrong position"<<endl;
+        return -1;
+    }
+}
+int main()
+{
+     int values,choice;
+     arr obj1;
+     cout<<"Enter size of array"<<endl;
+     cin>>obj1.sizes;
+     cout<<"Enter length"<<endl;
+     cin>>obj1.length;
+     cout<<"Enter elements inside array"<<endl;
+     for(int i=0;i<obj1.length;i++)
+     {
+         cin>>obj1.a[i];
+         cout<<endl;
+     }
+     cout<<"Enter the position of Element you want to delete"<<endl;
+     cin>>choice;
+   values=obj1.deletion(choice);
+   if(values!=-1)//assuming all elements in array is positive
+   {
+       cout<<values<<"is deleted"<<endl<<"Now your array is"<<endl;
+
+    obj1.display();
+   }
+    return 0;
+}
