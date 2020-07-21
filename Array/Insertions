@@ -1,0 +1,102 @@
+#include <iostream>
+
+using namespace std;
+class arr
+{
+  public:
+      int a[10];
+      int length;
+      int sizes;
+      void display();
+      void append(int z);
+      void insertion(int x, int value);
+};
+void arr::display()
+{
+    for(int i=0;i<length;i++)
+    {
+        cout<<a[i]<<" ";
+
+    }
+
+}
+void arr::append(int z)
+{
+
+    if(length<sizes)
+    {
+    a[length++]=z;
+   cout<<"Your new array"<<endl;
+    }
+
+    else{
+        cout<<"\t \t OOPS Already Filled"<<endl;
+    }
+}
+void arr::insertion(int x,int value)
+{   if(length<sizes)
+{
+if(x<=length)
+{
+    for(int i=length;i>x-1;i--)
+    {
+
+        a[i]=a[i-1];
+
+    }
+    a[x-1]=value;
+    length++;
+}
+else{
+    a[x-1]=value;
+    length=x;
+}
+}
+else{
+    cout<<"\t \t Array is already filled";
+}
+}
+int main()
+{     int values,choice1,choice2;
+     arr obj1;
+     cout<<"Enter size of array"<<endl;
+     cin>>obj1.sizes;
+     cout<<"Enter length"<<endl;
+     cin>>obj1.length;
+     cout<<"enter elements inside array"<<endl;
+     for(int i=0;i<obj1.length;i++)
+     {
+         cin>>obj1.a[i];
+         cout<<endl;
+     }
+    cout<<endl<<"If you want to enter the element in array:-"<<endl<<"At end press 1 or"<<endl<<"If at any position press 2"<<endl;
+     cin>>choice1;
+     if(choice1==1)
+     {
+     cout<<"Enter the value to enter at the end"<<endl;
+     cin>>values;
+     obj1.append(values);
+    cout<<endl<<"If You want to print array press 1"<<endl;
+    cin>>choice2;
+    if(choice2==1)
+    {
+        obj1.display();
+    }
+
+}
+else if(choice1==2)
+{  int val,pos;
+    cout<<"Enter the Position at which you want to enter value"<<endl;
+    cin>>pos;
+    cout<<"Now enter the value to be entered"<<endl;
+    cin>>val;
+    obj1.insertion(pos,val);
+    cout<<endl<<"If You want to print array press 1"<<endl;
+    cin>>choice2;
+    if(choice2==1)
+    {
+        obj1.display();
+    }
+
+}
+}
